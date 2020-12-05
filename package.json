@@ -1,0 +1,22 @@
+{
+  "name": "twitterkeywordlookup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RicheyJay23/TwitterKeywordLookup.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RicheyJay23/TwitterKeywordLookup/issues"
+  },
+  "homepage": "https://github.com/RicheyJay23/TwitterKeywordLookup#readme",
+  "dependencies": {
+    "firebase-tools": "^8.17.0"
+  }
+}
