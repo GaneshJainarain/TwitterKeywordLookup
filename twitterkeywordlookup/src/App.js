@@ -17,8 +17,11 @@ class App extends Component {
               </Header >
               <Drawer classname="menu_nav" title="Menu">
                   <Navigation>
+                      <Link to="/Login">Login</Link>
                       <Link to="/"> FrontPage</Link>
                       <Link to="/KeywordSearch">KeywordSearch</Link>
+                      
+
                       
                   </Navigation>
               </Drawer>
