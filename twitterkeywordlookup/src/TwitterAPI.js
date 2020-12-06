@@ -14,6 +14,26 @@ var client = new Twitter({
     access_token_key: TWITTER_ACCESS_TOKEN,
     access_token_secret: TWITTER_ACCESS_TOKEN_SECRET
 });
+<<<<<<< HEAD
 
 console.log(`api key: ${process.env.TWITTER_API_KEY}`)
 console.log('api secret:', process.env.TWITTER_API_SECRET_KEY)
+=======
+async () => {
+
+    var params = {q: '#NIO since:2020-12-01', count:1000};
+    client.get('statuses/user_timeline', params, function(error, tweets, response) {
+    if (!error) {
+        console.log(tweets);
+    
+    }
+});
+
+}
+
+  
+
+
+
+
+>>>>>>> f224617d7a2a84c997929a59693da1e57fca07b3
