@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/RicheyJay23/TwitterKeywordLookup#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "firebase-tools": "^8.17.0",
     "got": "^11.8.0",
     "needle": "^2.5.2",

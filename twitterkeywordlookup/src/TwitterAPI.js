@@ -14,3 +14,14 @@ var client = new Twitter({
     access_token_key: AccessToken,
     access_token_secret: AccessTokenSecret
 });
+
+client.get('statuses/user_timeline', {q: '#NIO since:2020-12-01', count:100}, function(error, tweets, response) {
+  if (!error) {
+    console.log(tweets);
+  }
+});
+  
+
+
+
+
