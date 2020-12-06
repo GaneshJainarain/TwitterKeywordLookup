@@ -19,7 +19,7 @@ class App extends Component {
                   <Navigation>
                       <Link to="/Login">Login</Link>
                       <Link to="/"> FrontPage</Link>
-                      <Link to="/KeywordSearch">KeywordSearch</Link>
+                      <Link to="/KeywordSearch">KeywordSearc</Link>
                       
 
                       
