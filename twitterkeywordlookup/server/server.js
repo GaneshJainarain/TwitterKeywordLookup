@@ -1,15 +1,22 @@
 const express = require("express");
+const oauth = require("oauth");
+const session = require("express-session");
+// const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const util = require("util");
-const request = require("request");
+// const util = require("util"); // only using promisfy
+const { promisfy } = require("util");
+const request = require("request"); // depreciated
+const got = require("got");
 const path = require("path");
 const socketIo = require("socket.io");
 const http = require("http");
+require("dotenv/config");
 
 const app = express();
 let port = process.env.PORT || 3000;
-const post = util.promisify(request.post);
-const get = util.promisify(request.get);
+// const post = util.promisify(request.post);
+const post = promisify(got.post);
+const get = promisify(got.get);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,17 +25,21 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 const BEARER_TOKEN = process.env.TWITTER_BEARER_TOKEN;
-console.log(BEARER_TOKEN)
+const COOKIE_SECRET = process.env.npm_config_cookie_secret || process.env.COOKIE_SECRET
+const TWITTER_API_KEY = process.env.npm_config_twitter_api_key || process.env.TWITTER_API_KEY
+const TWITTER_API_SECRET_KEY = process.env.npm_config_twitter_api_secret_key || process.env.TWITTER_API_SECRET_KEY
 
 let timeout = 0;
 
 const streamURL = new URL(
   "https://api.twitter.com/2/tweets/search/stream?tweet.fields=context_annotations&expansions=author_id"
 );
+// console.log('streamURL:', streamURL)
 
 const rulesURL = new URL(
   "https://api.twitter.com/2/tweets/search/stream/rules"
 );
+// console.log('rulesURL:', rulesURL)
 
 const errorMessage = {
   title: "Please Wait",
@@ -45,6 +56,7 @@ const authMessage = {
 };
 
 const sleep = async (delay) => {
+    // console.log('sleep:', sleep)
   return new Promise((resolve) => setTimeout(() => resolve(true), delay));
 };
 
@@ -80,6 +92,7 @@ app.get("/api/rules", async (req, res) => {
 });
 
 app.post("/api/rules", async (req, res) => {
+    console.log(post)
   if (!BEARER_TOKEN) {
     res.status(400).send(authMessage);
   }
